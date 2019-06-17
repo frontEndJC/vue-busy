@@ -5,8 +5,8 @@ import App from './App'
 import router from './router'
 import store from './store/'
 
-import 'styles/reset.css'
-import 'styles/border.css'
+import 'css/reset.css'
+import 'css/border.css'
 
 import Vant from 'vant'
 import 'vant/lib/index.css'

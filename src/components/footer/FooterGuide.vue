@@ -10,7 +10,7 @@
   </section>
   <section @click = "gotoAddress('/order')" class="guide-item" :class="$route.path.indexOf('order') !== -1? 'active' : ''">
     <i class="iconfont icon-dingdan"></i>
-    <span>我的订单</span>
+    <span>订单</span>
   </section>
   <section @click = "gotoAddress('/profile')" class="guide-item" :class="$route.path.indexOf('profile') !== -1? 'active' : ''">
     <i class="iconfont icon-wodedangxuan"></i>
@@ -36,7 +36,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-@import 'styles/varibles.scss';
+@import 'css/varibles.scss';
 .footer-guide {
   position: fixed;
   bottom: 0;

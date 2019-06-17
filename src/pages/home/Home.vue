@@ -1,22 +1,9 @@
 <template>
   <div class="home">
-    <van-pull-refresh v-model="isLoading" @refresh="onRefresh" class="scroll">
-      <header class="header">
-        <div class="address">
-          <i class="iconfont icon-dizhi address-icon"></i>
-          <span>{{ $store.state.address }}</span>
-          <i class="iconfont icon-arrow choose-address-icon"></i>
-        </div>
-        <div class="user-name">
-          <div v-if="$store.state.userInfo!==null">{{$store.state.userInfo.name}}</div>
-          <div v-else>
-            <span>登录</span>/
-            <span>注册</span>
-          </div>
-        </div>
-      </header>
+
+      <HomeHeader />
       <section class="search">
-        <div class="search-link" @click="this.$router.push('/search')">
+        <div class="search-link" @click="$router.push('/search')">
           <span class="icon iconfont icon-sousuo"></span>
           <span class="text">请输入商家或者商品名字</span>
         </div>
@@ -49,6 +36,7 @@
           <li class="recommend-item"></li>
         </ul>
       </section>
+      <van-pull-refresh v-model="isLoading" @refresh="onRefresh" class="scroll">
       <section class="shops">
         <h2>附近商家</h2>
         <van-list v-model="loading" :finished="finished" finished-text="暂无更多" @load="onLoad">
@@ -61,11 +49,13 @@
 </template>
 
 <script>
+import HomeHeader from './children/HomeHeader.vue'
 import HomeNav from './children/HomeNav.vue'
 import FooterGuide from 'src/components/footer/FooterGuide.vue'
 export default {
   name: 'Home',
   components: {
+    HomeHeader,
     HomeNav,
     FooterGuide
   },
@@ -106,38 +96,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "styles/varibles.scss";
+@import "css/varibles.scss";
 .home {
   width: 100%;
   height: 100%;
   .scroll {
     padding-bottom: 0.98rem;
-  }
-  .header {
-    display: flex;
-    justify-content: space-between;
-    height: 0.88rem;
-    line-height: 0.88rem;
-    padding: 0 0.3rem;
-    background-color: $bgColor;
-    color: #fff;
-    .address {
-      font-size: 0.34rem;
-      .address-icon {
-        margin-right: 0.04rem;
-        display: inline-block;
-        width: 0.26rem;
-        height: 0.32rem;
-      }
-      .choose-address-icon {
-        display: inline-block;
-        width: 0.26rem;
-        height: 0.32rem;
-      }
-    }
-    .user-name {
-      font-size: 0.3rem;
-    }
   }
   .search {
     height: 0.68rem;
