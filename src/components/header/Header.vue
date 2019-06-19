@@ -1,6 +1,10 @@
 <template>
   <header class="header" :class="{themeBg: isThemeBg}">
-    <slot name="left"></slot>
+    <i
+      class="iconfont icon-arrow-left go-back"
+      @click="$router.go(-1)"
+      v-show="isGoBack"
+    ></i>
     <h2 class="header-title">{{ title }}</h2>
     <slot name="right"></slot>
   </header>
@@ -11,7 +15,8 @@ export default {
   name: '',
   props: {
     title: String,
-    isThemeBg: Boolean
+    isThemeBg: Boolean,
+    isGoBack: Boolean
   }
 }
 </script>
@@ -24,7 +29,9 @@ export default {
   line-height: 0.88rem;
   padding: 0 0.3rem;
   background: #ffffff;
-  color: $bgColor;
+  .go-back {
+    font-size: 0.4rem;
+  }
   .header-title {
     position: absolute;
     top: 50%;
