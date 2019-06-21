@@ -8,11 +8,34 @@ export default new Router({
   routes: [
     { path: '/', redirect: '/home' },
     { path: '/home', component: Home },
-    { path: '/hall', component: () => import('pages/hall/Hall') },
-    { path: '/order', component: () => import('pages/order/Order') },
+    { path: '/hall', component: () => import('pages/hall/Hall'), meta: {shouldLogin: true} },
+    { path: '/order', component: () => import('pages/order/Order'), meta: {shouldLogin: true} },
     { path: '/profile', component: () => import('pages/profile/Profile') },
+    {
+      path: '/login',
+      component: () => import('pages/login/login'),
+      children: [
+        {
+          path: '',
+          redirect: 'sms'
+        },
+        {
+          path: 'sms',
+          component: () => import('pages/login/children/Sms')
+        },
+        {
+          path: 'vercode',
+          name: 'VerCode',
+          component: () => import('pages/login/children/VerCode')
+        }
+      ]
+    },
+    {
+      path: '/register',
+      component: () => import('pages/register/Register')
+    },
     { path: '/search', component: () => import('pages/search/Search') },
-    { path: '/info', component: () => import('pages/info/info') },
-    { path: '/wallet', component: () => import('pages/wallet/Wallet') }
+    { path: '/info', component: () => import('pages/info/info'), meta: {shouldLogin: true} },
+    { path: '/wallet', component: () => import('pages/wallet/Wallet'), meta: {shouldLogin: true} }
   ]
 })

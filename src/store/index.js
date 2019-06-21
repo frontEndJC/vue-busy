@@ -10,7 +10,9 @@ const state = {
   address: '当前地址',
   userInfo: {
     name: 'J灬JC'
-  }
+  },
+  token: 'wdwdqwfwefwefefwef',
+  price: 50.10
 }
 
 export default new Vuex.Store({

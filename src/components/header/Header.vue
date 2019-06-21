@@ -29,6 +29,7 @@ export default {
   line-height: 0.88rem;
   padding: 0 0.3rem;
   background: #ffffff;
+  border-bottom: 1px solid #ccc;
   .go-back {
     font-size: 0.4rem;
   }
@@ -42,6 +43,7 @@ export default {
 }
 .themeBg {
   background: $bgColor;
+  border-bottom: none;
   color: #fff;
 }
 </style>

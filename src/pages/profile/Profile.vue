@@ -59,11 +59,13 @@ export default {
       left: -20%;
       width: 140%;
       height: 3rem;
-      z-index: -1;
+      z-index: 0;
       border-radius: 0 0 50% 50%;
       background: $bgColor;
     }
     .info-box {
+      position: relative;
+      z-index: 1;
       margin: 0 auto;
       box-sizing: border-box;
       width: 7.1rem;

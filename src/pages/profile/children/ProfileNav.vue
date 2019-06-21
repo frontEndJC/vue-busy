@@ -48,7 +48,7 @@
     </div>
     <span class="item-info">推荐好友</span>
   </div>
-  <div class="nav-item">
+  <div class="nav-item" @click="signOut">
     <div class="icon-box">
       <img src="../../../images/profile-icon09.png" alt="">
     </div>
@@ -63,6 +63,14 @@ export default {
   methods: {
     goto (to) {
       this.$router.push(to)
+    },
+    signOut () {
+      const token = this.$store.state.token
+      this.$get('/apis/signOut', {
+        token: token
+      }).then(res => {
+        this.$store.commit('sign_out')
+      })
     }
   }
 }

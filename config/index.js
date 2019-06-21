@@ -6,11 +6,19 @@ const path = require('path')
 
 module.exports = {
   dev: {
-
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/apis': {
+        // 测试环境
+        target: ' https://www.easy-mock.com/mock/5ca335060761637885151095/example/', // 接口域名
+        changeOrigin: true, // 是否跨域
+        pathRewrite: {
+          '^/apis': '' // 需要rewrite重写的,
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
